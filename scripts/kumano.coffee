@@ -6,9 +6,6 @@ module.exports = (robot) ->
 
     msg.send msg.random osawares
 
-  robot.hear /cv/i (msg) ->
-    msg.send "ブリドカットセーラ恵美"
-
   robot.hear /tou/i, (msg) -> 
     msg.send "とぉぉ↑おう↓"
 
@@ -17,3 +14,6 @@ module.exports = (robot) ->
 
   robot.leave (res) ->
     res.send "ん…んぅぅ……ふぁぁ…私、ちょっと眠くなってきましたわ。"
+
+  robot.hear /cv/i, (msg) ->
+    msg.send 'ブリドカットセーラ恵美'
