@@ -8,3 +8,9 @@ module.exports = (robot) ->
 
   robot.hear /tou/i, (msg) -> 
     msg.send "とぉぉ↑おう↓"
+
+  robot.enter (res) ->
+    res.send "ごきげんよう、わたくしが重巡、熊野ですわ！"
+
+  robot.leave (res) ->
+    res.send "ん…んぅぅ……ふぁぁ…私、ちょっと眠くなってきましたわ。"
