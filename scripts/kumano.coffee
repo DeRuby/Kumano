@@ -17,3 +17,9 @@ module.exports = (robot) ->
 
   robot.hear /cv/i, (msg) ->
     msg.send 'ブリドカットセーラ恵美'
+
+  robot.hear /熊野/i, (msg) ->
+    msg.send "この熊野を呼びまして？"
+
+  robot.hear /おやすみ/i, (msg) -> 
+    msg.send "ん…んぅぅ……ふぁぁ…私、ちょっと眠くなってきましたわ。"
