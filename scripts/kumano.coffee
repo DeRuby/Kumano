@@ -1,10 +1,11 @@
+osawares = (msg) ->
+  ['この熊野に気安く触るなんて、提督も何か勘違いされてるのではなくって？',
+    "あら @#{msg.message.user.name }, 熊野に何かご用？",
+    "よろしくてよ？"]
+
 module.exports = (robot) ->
   robot.hear /osawari/i, (msg) ->
-    osawares = ['この熊野に気安く触るなんて、提督も何か勘違いされてるのではなくって？',
-      "あら @#{msg.message.user.name }, 熊野に何かご用？",
-      "よろしくてよ？"]
-
-    msg.send msg.random osawares
+    msg.send msg.random osawares(msg)
 
   robot.hear /tou/i, (msg) -> 
     msg.send "とぉぉ↑おう↓"
