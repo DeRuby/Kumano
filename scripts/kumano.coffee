@@ -33,8 +33,8 @@ module.exports = (robot) ->
   robot.hear /おやすみ/i, (msg) -> 
     msg.send "ん…んぅぅ……ふぁぁ…私、ちょっと眠くなってきましたわ。"
 
-  new cron '00 00 12 * * *', () =>
-    robot.send {room: "#general"}, "12時。私(わたくし)、ランチにはサンドイッチを所望しますわ。"
+  new cron '00 00 * * * *', () =>
+    robot.send {room: "#general"}, hourly()[(new Date()).getHours()]
   , null, true, "Asia/Tokyo"
 
   robot.hear /jihou/i, (msg) ->
