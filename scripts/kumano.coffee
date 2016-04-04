@@ -1,3 +1,5 @@
+cron = require('cron').CronJob
+
 osawares = (msg) ->
   ['この熊野に気安く触るなんて、提督も何か勘違いされてるのではなくって？',
     "あら @#{msg.message.user.name }, 熊野に何かご用？",
@@ -30,3 +32,7 @@ module.exports = (robot) ->
 
   robot.hear /おやすみ/i, (msg) -> 
     msg.send "ん…んぅぅ……ふぁぁ…私、ちょっと眠くなってきましたわ。"
+
+  new cron '00 00 12 * * *', () =>
+    robot.send {room: "#general"}, "12時。私(わたくし)、ランチにはサンドイッチを所望しますわ。"
+  , null, true, "Asia/Tokyo"
