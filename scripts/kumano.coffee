@@ -20,6 +20,9 @@ osawares = (msg) ->
     "よろしくてよ？"]
 
 module.exports = (robot) ->
+  robot.router.get '/', (req, res) ->
+    res.send 'MY HISHOKAN KUMANO 1.0'
+
   robot.hear /osawari/i, (msg) ->
     msg.send msg.random osawares(msg)
 
