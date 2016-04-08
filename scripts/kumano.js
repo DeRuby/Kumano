@@ -1,7 +1,7 @@
-cron = require('cron').CronJob
+var cron = require('cron').CronJob
 
-osawares = (msg) ->
-  ['この熊野に気安く触るなんて、提督も何か勘違いされてるのではなくって？',
+var osawares = function(msg) { 
+  return ['この熊野に気安く触るなんて、提督も何か勘違いされてるのではなくって？',
     "あら @#{msg.message.user.name }, 熊野に何かご用？",
     "この熊野を呼びまして？",
     "あら @#{msg.message.user.name }, この熊野を呼びまして？",
@@ -17,46 +17,56 @@ osawares = (msg) ->
     "神戸元町の事ならこの私にお任せですわ？",
     "真打参上ですわ〜〜〜！",
     "とぉぉ↑おう↓",
-    "よろしくてよ？"]
+    "よろしくてよ？"];
+};
 
-module.exports = (robot) ->
-  robot.router.get '/', (req, res) ->
-    res.send 'MY HISHOKAN KUMANO 1.0'
+export default function (robot) {
+  robot.router.get ('/', (req, res) =>{
+    res.send ('MY HISHOKAN KUMANO 1.0');
+  });
 
-  robot.hear /osawari/i, (msg) ->
-    msg.send msg.random osawares(msg)
+  robot.hear (/osawari/i, (msg) => {
+    msg.send (msg.random(osawares(msg)));
+  });
 
-  robot.hear /tou/i, (msg) -> 
-    msg.send "とぉぉ↑おう↓"
+  robot.hear (/tou/i, (msg) => {
+    msg.send ("とぉぉ↑おう↓");
+  });
 
-  robot.enter (res) ->
-    res.send "ごきげんよう、わたくしが重巡、熊野ですわ！"
+  robot.enter ((res) => {
+    res.send ("ごきげんよう、わたくしが重巡、熊野ですわ！");
+  });
 
-  robot.leave (res) ->
-    res.send "ん…んぅぅ……ふぁぁ…私、ちょっと眠くなってきましたわ。"
+  robot.leave ((res) => {
+    res.send ("ん…んぅぅ……ふぁぁ…私、ちょっと眠くなってきましたわ。");
+  });
 
-  robot.hear /cv/i, (msg) ->
-    msg.send 'ブリドカットセーラ恵美'
+  robot.hear (/cv/i, (msg) => {
+    msg.send ('ブリドカットセーラ恵美');
+  });
 
-  robot.hear /熊野/i, (msg) ->
-    msg.send msg.random osawares(msg)
+  robot.hear (/熊野/i, (msg) => {
+    msg.send (msg.random(osawares(msg)));
+  });
 
-  robot.hear /おやすみ/i, (msg) -> 
-    msg.send "ん…んぅぅ……ふぁぁ…私、ちょっと眠くなってきましたわ。"
+  robot.hear (/おやすみ/i, (msg) => {
+    msg.send ("ん…んぅぅ……ふぁぁ…私、ちょっと眠くなってきましたわ。");
+  });
 
-  robot.hear /かも/i, (msg) -> 
-    msg.send "秋津洲「よんだかも？」"
+  robot.hear (/かも/i, (msg) => {
+    msg.send ("秋津洲「よんだかも？」");
+  });
 
-  new cron '00 00 * * * *', () =>
-    robot.send {room: "#general"}, hourly()[(new Date()).getHours()]
-  , null, true, "Asia/Tokyo"
+  new cron ('00 00 * * * *', () => {
+    robot.send ({room: "#general"}, hourly()[(new Date()).getHours()]);
+  } , null, true, "Asia/Tokyo");
 
-  robot.hear /jihou/i, (msg) ->
-    msg.send msg.random hourly()
+  robot.hear (/jihou/i, (msg) => {
+    msg.send (msg.random(hourly()));
+  });
 
-hourly = () -> 
-  [
-    '深夜0時ですわ。',
+var hourly = function() {
+  return [ '深夜0時ですわ。',
     '1時よ。お肌に悪いわ…熊野の美貌に対する挑戦なの？',
     '提督？いつまで起きていらっしゃるの？2時よ。',
     '深夜三時ですって！？　ありえませんわ',
@@ -80,4 +90,5 @@ hourly = () ->
     '21時になりましたわ。遅めのディナーもよろしいんじゃなくて。',
     '22時。私、美容のため仮眠いただきますわ。',
     '23時です、提督。夜はこれから、どうされるのかしら？'
-  ]
+  ];};
+}
