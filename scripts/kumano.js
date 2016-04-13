@@ -2,12 +2,12 @@ var cron = require('cron').CronJob
 
 var osawares = function(msg) { 
   return ['この熊野に気安く触るなんて、提督も何か勘違いされてるのではなくって？',
-    "あら @#{msg.message.user.name }, 熊野に何かご用？",
+    `あら @${msg.message.user.name}, 熊野に何かご用？`,
     "この熊野を呼びまして？",
-    "あら @#{msg.message.user.name }, この熊野を呼びまして？",
+    `あら @${msg.message.user.name}, この熊野を呼びまして？`,
     "服が汚れたじゃなぁい！",
     "私の髪、梳くってくださる？",
-    "ごきげんよう、@#{msg.message.user.name}。",
+    `ごきげんよう、@${msg.message.user.name}。`,
     "ｵｯ紅茶が冷めてしまいますわよ！！",
     "おさわり禁止ですのよ？",
     "あなたの一族を根絶やしにして差し上げますわ。",
@@ -17,6 +17,7 @@ var osawares = function(msg) {
     "神戸元町の事ならこの私にお任せですわ？",
     "真打参上ですわ〜〜〜！",
     "とぉぉ↑おう↓",
+    "私はリンじゃありませんわ？",
     "よろしくてよ？"];
 };
 
